@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Страница-1" id="NZAIvHr0rghmlrM_GXu3">
+    <mxGraphModel dx="1212" dy="733" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="start" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;fontColor=#FFFFFF;" value="Начало" vertex="1">
+          <mxGeometry height="40" width="40" x="400" y="40" as="geometry" />
+        </mxCell>
+        <mxCell id="action1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Получить данные клиента" vertex="1">
+          <mxGeometry height="50" width="160" x="340" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="decision1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Документы загружены?" vertex="1">
+          <mxGeometry height="80" width="140" x="350" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="action2" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Запросить загрузку документов" vertex="1">
+          <mxGeometry height="50" width="160" x="120" y="225" as="geometry" />
+        </mxCell>
+        <mxCell id="action3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Проверить действительность прав" vertex="1">
+          <mxGeometry height="50" width="160" x="340" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="decision2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Права действительны?" vertex="1">
+          <mxGeometry height="80" width="140" x="350" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="action4" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" value="Отказ в аренде" vertex="1">
+          <mxGeometry height="50" width="160" x="120" y="445" as="geometry" />
+        </mxCell>
+        <mxCell id="action5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" value="Подтвердить клиента" vertex="1">
+          <mxGeometry height="50" width="160" x="340" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="end" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=3;" value="" vertex="1">
+          <mxGeometry height="40" width="40" x="400" y="650" as="geometry" />
+        </mxCell>
+        <mxCell id="endDot" parent="end" style="ellipse;whiteSpace=wrap;html=1;fillColor=#000000;strokeColor=#000000;" value="" vertex="1">
+          <mxGeometry height="16" width="16" x="12" y="12" as="geometry" />
+        </mxCell>
+        <mxCell id="edge1" edge="1" parent="1" source="start" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="action1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge2" edge="1" parent="1" source="action1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="decision1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge3" edge="1" parent="1" source="decision1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="action2" value="Нет">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge4" edge="1" parent="1" source="action2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;exitX=0.5;exitY=0;entryX=0.5;entryY=1;" target="decision1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="180" />
+              <mxPoint x="420" y="180" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge5" edge="1" parent="1" source="decision1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="action3" value="Да">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge6" edge="1" parent="1" source="action3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="decision2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge7" edge="1" parent="1" source="decision2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="action4" value="Нет">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge8" edge="1" parent="1" source="action4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="end">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9" edge="1" parent="1" source="decision2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="action5" value="Да">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge10" edge="1" parent="1" source="action5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;" target="end">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
