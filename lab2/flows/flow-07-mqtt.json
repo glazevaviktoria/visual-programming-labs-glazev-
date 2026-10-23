@@ -1,0 +1,138 @@
+[
+    {
+        "id": "13ee9b5c040677ef",
+        "type": "inject",
+        "z": "a9e425f57519a946",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "a7fe465cb0213ba8"
+            ]
+        ]
+    },
+    {
+        "id": "a7fe465cb0213ba8",
+        "type": "function",
+        "z": "a9e425f57519a946",
+        "name": "random",
+        "func": "msg.payload = Math.floor(Math.random() * 100);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 360,
+        "wires": [
+            [
+                "c720ed565f16d508"
+            ]
+        ]
+    },
+    {
+        "id": "c720ed565f16d508",
+        "type": "mqtt out",
+        "z": "a9e425f57519a946",
+        "name": "lab2/Glazeva/mqtt",
+        "topic": "lab2/Glazeva/mqtt",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "92239203e2c4026a",
+        "x": 630,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "608d637fe0e1be03",
+        "type": "mqtt in",
+        "z": "a9e425f57519a946",
+        "name": "",
+        "topic": "lab2/Glazeva/mqtt",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "92239203e2c4026a",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 500,
+        "wires": [
+            [
+                "2ed96f48a8c9929c"
+            ]
+        ]
+    },
+    {
+        "id": "2ed96f48a8c9929c",
+        "type": "debug",
+        "z": "a9e425f57519a946",
+        "name": "debug 8",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "92239203e2c4026a",
+        "type": "mqtt-broker",
+        "name": "HiveMQ",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    }
+]

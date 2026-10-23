@@ -1,0 +1,68 @@
+[
+    {
+        "id": "a7aa43b3b2f619c3",
+        "type": "http request",
+        "z": "3181f984c9d8ccf5",
+        "name": "lab2/Glazeva/http",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://catfact.ninja/fact",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 470,
+        "y": 320,
+        "wires": [
+            [
+                "f16e91daea69a9c8"
+            ]
+        ]
+    },
+    {
+        "id": "89af09dcd65301f7",
+        "type": "inject",
+        "z": "3181f984c9d8ccf5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 240,
+        "y": 320,
+        "wires": [
+            [
+                "a7aa43b3b2f619c3"
+            ]
+        ]
+    },
+    {
+        "id": "f16e91daea69a9c8",
+        "type": "debug",
+        "z": "3181f984c9d8ccf5",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 640,
+        "y": 320,
+        "wires": []
+    }
+]

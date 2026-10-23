@@ -1,0 +1,68 @@
+[
+    {
+        "id": "6de33128584812c3",
+        "type": "function",
+        "z": "f175f394a76db849",
+        "name": "lab2/Glazeva/function",
+        "func": "// Массив с числами\nconst numbers = [10, 25, 3, 47, 8];\nlet sum = 0;\n\n// Цикл для подсчёта суммы\nfor (let i = 0; i < numbers.length; i++) {\n    sum += numbers[i];\n}\n\n// Условие if/else\nlet message;\nif (sum > 50) {\n    message = \"Сумма большая\";\n} else {\n    message = \"Сумма небольшая\";\n}\n\n// Формируем объект с результатом\nmsg.payload = {\n    originalArray: numbers,\n    sum: sum,\n    message: message,\n    timestamp: new Date().toISOString()\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 340,
+        "wires": [
+            [
+                "b9f779a5220547d9"
+            ]
+        ]
+    },
+    {
+        "id": "245e65b6d9f35b65",
+        "type": "inject",
+        "z": "f175f394a76db849",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "6de33128584812c3"
+            ]
+        ]
+    },
+    {
+        "id": "b9f779a5220547d9",
+        "type": "debug",
+        "z": "f175f394a76db849",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 340,
+        "wires": []
+    }
+]

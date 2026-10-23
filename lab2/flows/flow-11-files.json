@@ -1,0 +1,134 @@
+[
+    {
+        "id": "4118f15a1fac264d",
+        "type": "inject",
+        "z": "8c9e6c539e405145",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "7",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "8902ebe5bd843a8b"
+            ]
+        ]
+    },
+    {
+        "id": "8902ebe5bd843a8b",
+        "type": "function",
+        "z": "8c9e6c539e405145",
+        "name": "function 4",
+        "func": "const data = {\n    student: \"Глазева\",\n    lab: 2,\n    timestamp: new Date().toISOString(),\n    value: Math.floor(Math.random() * 100)\n};\nmsg.payload = JSON.stringify(data);\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 380,
+        "wires": [
+            [
+                "882a1b53b93d176b"
+            ]
+        ]
+    },
+    {
+        "id": "882a1b53b93d176b",
+        "type": "file",
+        "z": "8c9e6c539e405145",
+        "name": "",
+        "filename": "C:\\Users\\user\\lab2-data.json",
+        "filenameType": "str",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 620,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f030207eb45352fa",
+        "type": "file in",
+        "z": "8c9e6c539e405145",
+        "name": "",
+        "filename": "C:\\Users\\user\\lab2-data.json",
+        "filenameType": "str",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 420,
+        "y": 500,
+        "wires": [
+            [
+                "6d1b0c1f52139af9"
+            ]
+        ]
+    },
+    {
+        "id": "750077d7fabf7676",
+        "type": "inject",
+        "z": "8c9e6c539e405145",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 500,
+        "wires": [
+            [
+                "f030207eb45352fa"
+            ]
+        ]
+    },
+    {
+        "id": "6d1b0c1f52139af9",
+        "type": "debug",
+        "z": "8c9e6c539e405145",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 480,
+        "wires": []
+    }
+]

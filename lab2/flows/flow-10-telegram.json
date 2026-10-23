@@ -1,0 +1,184 @@
+[
+    {
+        "id": "79103b53d943dfb6",
+        "type": "telegram command",
+        "z": "18f1489ecc4b46fa",
+        "name": "",
+        "command": "/start",
+        "description": "Стартовая команда",
+        "registercommand": false,
+        "language": "ru",
+        "scope": "default",
+        "bot": "cffb8866927cdc76",
+        "strict": false,
+        "hasresponse": true,
+        "useregex": false,
+        "removeregexcommand": false,
+        "outputs": 2,
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "599d352a84dcd567"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "5bf0b44e5566e946",
+        "type": "telegram sender",
+        "z": "18f1489ecc4b46fa",
+        "name": "",
+        "bot": "cffb8866927cdc76",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 650,
+        "y": 180,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "0dab7f063aea01c2",
+        "type": "telegram receiver",
+        "z": "18f1489ecc4b46fa",
+        "name": "",
+        "bot": "cffb8866927cdc76",
+        "saveDataDir": "",
+        "filterCommands": false,
+        "hasinput": false,
+        "inputs": 0,
+        "handleallupdates": true,
+        "handleprocessupdates": true,
+        "x": 150,
+        "y": 320,
+        "wires": [
+            [
+                "97ec814c06084705"
+            ],
+            [
+                "92087782863eed1b"
+            ]
+        ]
+    },
+    {
+        "id": "97ec814c06084705",
+        "type": "function",
+        "z": "18f1489ecc4b46fa",
+        "name": "function 3",
+        "func": "// Проверяем, где лежит текст (зависит от версии ноды)\nlet userText = \"\";\nlet chatId = \"\";\n\nif (msg.payload && msg.payload.content) {\n    userText = msg.payload.content;\n    chatId = msg.payload.chatId;\n} else if (msg.originalMessage && msg.originalMessage.text) {\n    userText = msg.originalMessage.text;\n    chatId = msg.originalMessage.chat.id;\n}\n\n// Если текст не найден — останавливаемся\nif (!userText) {\n    node.warn(\"Текст сообщения не найден!\");\n    return null;\n}\n\n// Формируем ответ\nmsg.payload = {\n    chatId: chatId,\n    type: \"message\",\n    content: \"Эхо: \" + userText\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 540,
+        "y": 320,
+        "wires": [
+            [
+                "69ee121e6b1394f1"
+            ]
+        ]
+    },
+    {
+        "id": "69ee121e6b1394f1",
+        "type": "telegram sender",
+        "z": "18f1489ecc4b46fa",
+        "name": "echo sender",
+        "bot": "cffb8866927cdc76",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 360,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "599d352a84dcd567",
+        "type": "change",
+        "z": "18f1489ecc4b46fa",
+        "name": "start reply",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.type",
+                "pt": "msg",
+                "to": "message",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.content",
+                "pt": "msg",
+                "to": "Привет! Я бот для лабы. Напиши мне что-нибудь.",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 320,
+        "y": 180,
+        "wires": [
+            [
+                "5bf0b44e5566e946"
+            ]
+        ]
+    },
+    {
+        "id": "92087782863eed1b",
+        "type": "debug",
+        "z": "18f1489ecc4b46fa",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "cffb8866927cdc76",
+        "type": "telegram bot",
+        "botname": "tvl_lab2_glazeva_bot",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "testenvironment": false,
+        "updatemode": "polling",
+        "pollinterval": 300,
+        "usesocks": false,
+        "sockshost": "",
+        "socksprotocol": "socks5",
+        "socksport": 6667,
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbothost": "0.0.0.0",
+        "localbotport": 8443,
+        "publicbotport": 8443,
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    },
+    {
+        "id": "3ea387ef94c68c0e",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-telegrambot": "19.0.3"
+        }
+    }
+]

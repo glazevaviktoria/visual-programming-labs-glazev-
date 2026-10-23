@@ -1,0 +1,117 @@
+[
+    {
+        "id": "aae6600536ad7d7e",
+        "type": "function",
+        "z": "df189557502f1eed",
+        "name": "lab2/Glazeva/function",
+        "func": "const numbers = [10, 25, 3, 47, 8];\nlet sum = 0;\n\nfor (let i = 0; i < numbers.length; i++) {\n    sum += numbers[i];\n}\n\nlet message;\nif (sum > 50) {\n    message = \"Сумма большая\";\n} else {\n    message = \"Сумма небольшая\";\n}\n\nmsg.payload = {\n    originalArray: numbers,\n    sum: sum,\n    message: message,\n    timestamp: new Date().toISOString()\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 420,
+        "wires": [
+            [
+                "cffe544664e35843"
+            ]
+        ]
+    },
+    {
+        "id": "a4823e7f9af5451d",
+        "type": "inject",
+        "z": "df189557502f1eed",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "aae6600536ad7d7e"
+            ]
+        ]
+    },
+    {
+        "id": "cffe544664e35843",
+        "type": "switch",
+        "z": "df189557502f1eed",
+        "name": "",
+        "property": "payload.sum",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "gt",
+                "v": "50",
+                "vt": "str"
+            },
+            {
+                "t": "lte",
+                "v": "50",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 420,
+        "wires": [
+            [
+                "fbf5415a590a9fe4",
+                "4a416963e8d4c3a0"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "fbf5415a590a9fe4",
+        "type": "debug",
+        "z": "df189557502f1eed",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "4a416963e8d4c3a0",
+        "type": "debug",
+        "z": "df189557502f1eed",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 280,
+        "wires": []
+    }
+]

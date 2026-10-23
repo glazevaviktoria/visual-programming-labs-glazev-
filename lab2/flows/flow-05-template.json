@@ -1,0 +1,67 @@
+[
+    {
+        "id": "b2e8181e44ac457f",
+        "type": "template",
+        "z": "4132878c2cc7bea3",
+        "name": "lab2/Glazeva/template",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Студент: {{payload.name}}\nГруппа: {{payload.group}}\nЛабораторная: №{{payload.lab}}",
+        "output": "str",
+        "x": 420,
+        "y": 380,
+        "wires": [
+            [
+                "f290482626192ff2"
+            ]
+        ]
+    },
+    {
+        "id": "1cdf5a0a336fabc2",
+        "type": "inject",
+        "z": "4132878c2cc7bea3",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"name\": \"Глазева\", \"group\": \"ТВП\", \"lab\": 2}",
+        "payloadType": "json",
+        "x": 120,
+        "y": 380,
+        "wires": [
+            [
+                "b2e8181e44ac457f"
+            ]
+        ]
+    },
+    {
+        "id": "f290482626192ff2",
+        "type": "debug",
+        "z": "4132878c2cc7bea3",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 380,
+        "wires": []
+    }
+]
