@@ -1,0 +1,95 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "225ff114-1ef5-40bb-ae4b-ab1739bab903",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "43f6d205-0182-4788-8cb6-c26767cb2956",
+              "name": "payload",
+              "value": "Глазева",
+              "type": "string"
+            },
+            {
+              "id": "3c4f0281-6925-4235-82d6-a873b347c3c9",
+              "name": "topic",
+              "value": "lab4/Glazeva/basic",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "7909eda7-f458-4d6e-bfd9-b3608d2fba26",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = $input.first().json;\nconsole.log(\"Полученные данные:\", data);\nreturn [{ json: data }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "f1e3d53a-9890-4a4e-9026-4bf832b8edac",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "82092203-5977-4ca6-96ba-45733bfdabd3",
+  "meta": {
+    "instanceId": "534bc804e640cb6010cf19bbdc46e81405bce469e11102543e6f3ee53025753f"
+  },
+  "nodeGroups": [],
+  "id": "rrhkgsxBTVkUOWzh",
+  "tags": []
+}

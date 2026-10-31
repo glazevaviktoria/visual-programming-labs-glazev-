@@ -1,0 +1,80 @@
+{
+  "name": "My workflow 5",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "d26bce2e-a5e5-481b-be9e-3d0041644bc8",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "url": "https://catfact.ninja/fact",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        224,
+        0
+      ],
+      "id": "04f62f8a-63fa-43f0-8eea-07511ea91d46",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "const factData = $input.first().json;\nconsole.log(\"Факт о коте:\", factData.fact);\nreturn [{ json: { payload: factData.fact } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        384,
+        16
+      ],
+      "id": "2a40e97d-1648-4137-96af-ba387832a2ac",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "8a35081b-eab0-4318-8592-74229c5a0f92",
+  "meta": {
+    "instanceId": "534bc804e640cb6010cf19bbdc46e81405bce469e11102543e6f3ee53025753f"
+  },
+  "nodeGroups": [],
+  "id": "gp7KDu5l5toaUWHl",
+  "tags": []
+}

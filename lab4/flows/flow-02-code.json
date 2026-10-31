@@ -1,0 +1,77 @@
+{
+  "name": "My workflow 2",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1ff5ef75-09e6-4d71-be2b-e08e0335b757",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Массив с числами\nconst numbers = [10, 25, 3, 47, 8];\nlet sum = 0;\n\n// Цикл для подсчёта суммы\nfor (let i = 0; i < numbers.length; i++) {\n    sum += numbers[i];\n}\n\n// Условие if/else\nlet message;\nif (sum > 50) {\n    message = \"Сумма большая\";\n} else {\n    message = \"Сумма небольшая\";\n}\n\n// Формируем объект с результатом\nconst result = {\n    originalArray: numbers,\n    sum: sum,\n    message: message,\n    timestamp: new Date().toISOString()\n};\n\n// Возвращаем объект с полем payload\nreturn [{ json: { payload: result } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "fc2eed8a-7de8-4d00-accb-4a00e3b36a7e",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "461672d0-302c-4ae2-b14e-3e9991f96619",
+      "name": "No Operation, do nothing"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "e5aa89f6-c034-492c-81c1-23fe065f6ae9",
+  "meta": {
+    "instanceId": "534bc804e640cb6010cf19bbdc46e81405bce469e11102543e6f3ee53025753f"
+  },
+  "nodeGroups": [],
+  "id": "ShaBJlp4iKvdKVYo",
+  "tags": []
+}

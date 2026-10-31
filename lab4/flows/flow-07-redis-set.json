@@ -1,0 +1,97 @@
+{
+  "name": "My workflow 7",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1117c71c-30b7-4501-b5d9-c92a1b785df0",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "glazeva",
+        "value": "hello"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        224,
+        0
+      ],
+      "id": "284b1724-f009-49f0-b328-2fd7ebce1975",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "Cu3LctQv3cXzC0eb",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "result",
+        "key": "glazeva",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        448,
+        0
+      ],
+      "id": "196480bf-7375-4dc3-abe0-3c3c75288ada",
+      "name": "Redis1",
+      "credentials": {
+        "redis": {
+          "id": "Cu3LctQv3cXzC0eb",
+          "name": "Redis account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Redis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "main": [
+        [
+          {
+            "node": "Redis1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "81a34e13-552a-43d9-93c8-21e7ab266ed1",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "534bc804e640cb6010cf19bbdc46e81405bce469e11102543e6f3ee53025753f"
+  },
+  "nodeGroups": [],
+  "id": "EGgeIxUCPqFi2mSL",
+  "tags": []
+}
